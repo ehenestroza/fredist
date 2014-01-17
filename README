@@ -1,0 +1,88 @@
+Introduction
+============
+
+The Python package 'fredist' implements methods that integrate transition-based
+syntactic dependency parsing, neighborhood parse correction, and the extraction
+of distributional lexical resources that can be used as features in parsing
+models.
+
+It is designed primarily for use with the French Dependency Treebank
+(http://alpage.inria.fr/statgram/frdep/fr_stat_dep_parsing.html), but it can 
+potentially be used with other languages and resources.
+
+For related publications, please visit: http://alpage.inria.fr/~henestro
+
+The fredist package is released with a GPL licence (see LICENCE).
+
+
+Installation
+============
+
+The package relies on a number of other programs and libraries: Python, Numpy, 
+LIBSVM with a Python interface, SVMLight, and PySVMLight. Software has been 
+tested on Linux.
+
+Prerequisites are:
+
+1. Python (versions 2.6 and 2.7 have been tested)
+  - Need the desired binary for Python to have the environment variable $PYTHON
+
+2. Numpy (version 1.7.0 has been tested)
+
+3. LIBSVM with Python interface (versions 3.11 and 3.16 have been tested)
+  - Website is 'http://www.csie.ntu.edu.tw/~cjlin/libsvm/'
+  - Download 'libsvm-3.16.tar.gz'
+  - Extract 'libsvm-3.16' to permanent location, assign it $LIBSVM
+  - Run 'make' to create 'svm-train' and 'svm-predict' binaries
+  - In its 'python' directory, run 'make' to create 'libsvm.so.2'
+  - Add 'libsvm.so.2' library to your Python site packages directory
+  - In your Python site packages directory, make a new directory 'libsvm'
+  - In that directory copy the 'svm.py' and 'svmutil.py' files
+  - Also in that directory, create a dummy '__init__.py' file
+
+4. SVMLight (version 6.02 has been tested)
+  - Website is 'http://svmlight.joachims.org/'
+  - Download 'svm_light.tar.gz'
+  - Create directory 'svmlight-6.02' in parmenent location, assign it $SVMLIGHT
+  - Extract archive here in this directory
+  - Run 'make' to obtain 'svm_learn' and 'svm_classify' binaries
+
+5. PySVMLight (version 0.4 has been tested)
+  - Website is 'https://pypi.python.org/pypi/svmlight'
+  - Download 'svmlight-0.4.tar.gz'
+  - Extract 'svmlight-0.4' to any location
+  - Follow README to install 'svmlight.so' library to your Python site packages
+
+
+You can install fredist by running the usual sequence of commands from the
+top-level directory:
+
+$> python setup.py install
+
+* NOTE * The release includes a 'data' directory containing useful default 
+feature templates (as Python files) as well as a text file containing accepted 
+preposition lemmas for the extraction of PP-attachment preference scores. The
+user needs to manually set, in dtbutils.py, the variable DATADIR to the 
+appropriate location.
+
+
+Version History
+===============
+
+* Version 2.0 *
+- Addition of transition-based dependency parsing and neighborhood parse 
+correction algorithms
+-  Methods for creating lexical generalization and PP-attachment resources 
+that can be integrated as features into parsing models.
+
+* Version 1.0 *
+- Creation of a working Python package for the construction of distributional 
+thesauri from text corpora.
+
+
+Contact
+=======
+
+Enrique Henestroza Anguiano
+ehenestroza@gmail.com
+
