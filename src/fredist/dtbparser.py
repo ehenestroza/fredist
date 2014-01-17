@@ -418,7 +418,7 @@ class DTBParser(object):
 
         # Attach all untreated tokens to the root.
         if mode == "training" and len(untreated) != num_root:
-            print >> sys.stderr, "Non-projective!" #, untreated
+            print >> sys.stderr, "Non-projective dep!", #, untreated
             # sys.exit(0)
         for i in untreated:
             sent[i][GOV] = 0
@@ -765,7 +765,7 @@ class DTBParser(object):
         cPickle.dump(self._alphas, pkstream, -1)
         os.system('cp '+param['template']+' '+model+'/templates.py')
         pkstream.close()
-        print >> sys.stderr, ". done!",
+        print >> sys.stderr, ". done!"
 
         trainstream.close()
         if devstream:

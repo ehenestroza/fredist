@@ -42,7 +42,7 @@ if [ $mode = 'xval' ]
 	CORPUSGOLD=${11}
 
         # Xval/Jack-knifing Parser
-	echo -n " time $PYTHON $dtbparser $x -c $c -f '"$divfpos"' -y $ptype -r $r -k $k -i $i -g $CORPUSTRAIN.conll -t $CORPUSTRAIN.conll -p $CORPUSTRAIN.pred-${ptype}.$suff.conll -m $CORPUSTRAIN.model-${ptype}-xval.$suff ; "
+	echo -n " $PYTHON $dtbparser $x -c $c -f '"$divfpos"' -y $ptype -r $r -k $k -i $i -g $CORPUSTRAIN.conll -t $CORPUSTRAIN.conll -p $CORPUSTRAIN.pred-${ptype}.$suff.conll -m $CORPUSTRAIN.model-${ptype}-xval.$suff ; "
 
         # Evaluation
 	echo -n "./eval07p.pl -p -g $CORPUSGOLD.conll -s $CORPUSTRAIN.pred-${ptype}.$suff.conll > $CORPUSTRAIN.pred-${ptype}.$suff.eval ; "
@@ -90,7 +90,7 @@ elif [ $mode = 'train' ]
     fi
 
     # Training Parser or Corrector
-    echo -n " time $PYTHON $dtbparser $subcat $selpref $x -c $c -f '"$divfpos"' $gold $dev $devg -y $ptype -r $r -i $i -t $CORPUSTRAIN.conll -m $CORPUSTRAIN.model-${ptype}.$suff --diagnostics $CORPUSTRAIN.model-${ptype}.$suff.diag ; "
+    echo -n " $PYTHON $dtbparser $subcat $selpref $x -c $c -f '"$divfpos"' $gold $dev $devg -y $ptype -r $r -i $i -t $CORPUSTRAIN.conll -m $CORPUSTRAIN.model-${ptype}.$suff --diagnostics $CORPUSTRAIN.model-${ptype}.$suff.diag ; "
     echo ""
     
 elif [ $mode = 'oracle' ]
@@ -102,7 +102,7 @@ elif [ $mode = 'oracle' ]
 	suff=oracle
 
         # Correcting
-	echo -n " time $PYTHON $dtbparser $x -f '"$divfpos"' -y $ptype -r $r -i $i -p $CORPUSTEST.conll -g $CORPUSTESTG.conll --diagnostics $CORPUSTEST.pred-${ptype}.$suff.diag > $CORPUSTEST.pred-${ptype}.$suff.conll ; "
+	echo -n " $PYTHON $dtbparser $x -f '"$divfpos"' -y $ptype -r $r -i $i -p $CORPUSTEST.conll -g $CORPUSTESTG.conll --diagnostics $CORPUSTEST.pred-${ptype}.$suff.diag > $CORPUSTEST.pred-${ptype}.$suff.conll ; "
 
         # Evaluation
 	echo -n "./eval07p.pl -p -g $CORPUSTESTG.conll -s $CORPUSTEST.pred-${ptype}.$suff.conll > $CORPUSTEST.pred-${ptype}.$suff.eval ; "
@@ -143,7 +143,7 @@ elif [ $mode = 'test' ]
     fi
 
     # Parsing or Correcting
-    echo -n " time $PYTHON $dtbparser $subcat $selpref $x -f '"$divfpos"' -y $ptype -r $r -i $i -p $CORPUSTEST.conll -m $CORPUSTRAIN.model-${ptype}.$suff --diagnostics $CORPUSTEST.pred-${ptype}.$suff.diag > $CORPUSTEST.pred-${ptype}.$suff.$IDX.conll ; "
+    echo -n " $PYTHON $dtbparser $subcat $selpref $x -f '"$divfpos"' -y $ptype -r $r -i $i -p $CORPUSTEST.conll -m $CORPUSTRAIN.model-${ptype}.$suff --diagnostics $CORPUSTEST.pred-${ptype}.$suff.diag > $CORPUSTEST.pred-${ptype}.$suff.$IDX.conll ; "
 
     # Evaluation
     echo -n "./eval07p.pl -p -g $CORPUSTESTG.conll -s $CORPUSTEST.pred-${ptype}.$suff.$IDX.conll > $CORPUSTEST.pred-${ptype}.$suff.$IDX.eval ; "
@@ -182,7 +182,7 @@ elif [ $mode = 'parse' ]
     fi
 
     # Parsing or Correcting
-    echo -n " time $PYTHON $dtbparser $subcat $selpref $x -f '"$divfpos"' -y $ptype -r $r -i $i -p $CORPUSTEST.conll -m $CORPUSTRAIN.model-${ptype}.$suff --diagnostics $CORPUSTEST.pred-${ptype}.$suff.diag > $CORPUSTEST.pred-${ptype}.$suff.$IDX.conll ; "
+    echo -n " $PYTHON $dtbparser $subcat $selpref $x -f '"$divfpos"' -y $ptype -r $r -i $i -p $CORPUSTEST.conll -m $CORPUSTRAIN.model-${ptype}.$suff --diagnostics $CORPUSTEST.pred-${ptype}.$suff.diag > $CORPUSTEST.pred-${ptype}.$suff.$IDX.conll ; "
 
     echo ""
 

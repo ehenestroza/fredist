@@ -30,7 +30,7 @@ Prerequisites are:
 2. Numpy (version 1.7.0 has been tested)
 
 3. LIBSVM with Python interface (versions 3.11 and 3.16 have been tested)
-  - Website is 'http://www.csie.ntu.edu.tw/~cjlin/libsvm/'
+  - Website: 'http://www.csie.ntu.edu.tw/~cjlin/libsvm/'
   - Download 'libsvm-3.16.tar.gz'
   - Extract 'libsvm-3.16' to permanent location, assign it $LIBSVM
   - Run 'make' to create 'svm-train' and 'svm-predict' binaries
@@ -41,29 +41,30 @@ Prerequisites are:
   - Also in that directory, create a dummy '__init__.py' file
 
 4. SVMLight (version 6.02 has been tested)
-  - Website is 'http://svmlight.joachims.org/'
+  - Website: 'http://svmlight.joachims.org/'
   - Download 'svm_light.tar.gz'
-  - Create directory 'svmlight-6.02' in parmenent location, assign it $SVMLIGHT
+  - Create directory 'svmlight-6.02' in permanent location, assign it $SVMLIGHT
   - Extract archive here in this directory
   - Run 'make' to obtain 'svm_learn' and 'svm_classify' binaries
 
 5. PySVMLight (version 0.4 has been tested)
-  - Website is 'https://pypi.python.org/pypi/svmlight'
+  - Website: 'https://pypi.python.org/pypi/svmlight'
   - Download 'svmlight-0.4.tar.gz'
   - Extract 'svmlight-0.4' to any location
   - Follow README to install 'svmlight.so' library to your Python site packages
 
 
-You can install fredist by running the usual sequence of commands from the
+You can then install fredist by running the usual sequence of commands from the
 top-level directory:
 
 $> python setup.py install
 
-* NOTE * The release includes a 'data' directory containing useful default 
-feature templates (as Python files) as well as a text file containing accepted 
-preposition lemmas for the extraction of PP-attachment preference scores. The
-user needs to manually set, in dtbutils.py, the variable DATADIR to the 
-appropriate location.
+The easiest way to use fredist is to run the module files as scripts, so you
+should set the environment variable $FREDIST to the location in the Python
+site-packages where fredist has been installed. 
+
+A simple example of training and testing a parsing model is provided in the 
+'example' directory of this distribution.
 
 
 Version History

@@ -12,6 +12,7 @@ import re
 import unicodedata
 import copy
 import sys
+import os
 
 # Enumerate CONLL fields (with some added ones)
 CONLLNUM = 15
@@ -72,7 +73,7 @@ MCMCN = 0
 MCLAB = 1
 
 # ** USER MODIFIED ** Location of preposition list and feature templates.
-DATADIR = 'path/to/fredist/data/'
+DATADIR = os.getenv('FREDIST')+'/data'
 TEMPLATEDIR = DATADIR
 PREPLIST = DATADIR+'/preps_autopos_autolem.txt'
 

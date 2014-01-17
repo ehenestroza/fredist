@@ -11,4 +11,5 @@ setup(name='fredist',
       license='GPL',
       packages=['fredist'],
       package_dir={'fredist': 'src/fredist'},
+      package_data={'fredist': [ 'data/*' ]}
       )
